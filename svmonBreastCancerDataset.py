@@ -14,8 +14,8 @@ y = cancer.target  # All of the labels
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size=0.2)
 
 classes = ['malignant', 'benign']
-#classifier = svm.SVC(kernel="linear", C=2)
-#classifier = svm.SVC(kernel="poly", degree=2) | 0.94
+classifier = svm.SVC(kernel="linear", C=2)
+#classifier = svm.SVC(kernel="poly", degree=2) #0.94
 
 #Trying KNeighbourClassifier
 #classifier = KNeighborsClassifier(n_neighbors=9) | 0.9736842105263158
