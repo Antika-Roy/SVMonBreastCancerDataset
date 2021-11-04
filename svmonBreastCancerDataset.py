@@ -2,12 +2,17 @@ import sklearn
 from sklearn import svm
 from sklearn import datasets
 from sklearn import metrics
+import pandas as pd
+from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
 
 cancer = datasets.load_breast_cancer()
 print("Features: ", cancer.feature_names)
 print("Labels: ", cancer.target_names)
 
+# Convert into DataFrame:
+data = pd.DataFrame(cancer.data, columns=cancer.feature_names)
+data['target'] = pd.Series(cancer.target)
 x = cancer.data  # All of the features
 y = cancer.target  # All of the labels
 
@@ -24,3 +29,7 @@ classifier.fit(x_train, y_train)
 predictions = classifier.predict(x_test)
 accuracy = metrics.accuracy_score(y_test, predictions)
 print(accuracy)
+
+# Visualizing the Performance:
+
+print(classification_report(y_test, predictions))
